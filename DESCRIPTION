@@ -1,0 +1,11 @@
+Package: pASTA
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Alexander", "Rix", role = "cre",
+           email = "alexrix@umich.edu")
+Description: What the package does (one paragraph).
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
