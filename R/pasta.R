@@ -1,6 +1,8 @@
 #' pASTA for multi-phenotype analysis
 #'
-#' description. TODO(youfei)
+#' Agnostically search for the subset that yields the strongest evidence of
+#' association and calculate the meta-analytic p-value, possibly in the
+#' presence of gene-environmental interaction.
 #'
 #' @param p.values the p.value for each study.
 #' @param study.sizes the sample size of each study.
@@ -36,7 +38,11 @@
 #'
 #'pasta$p.pasta.joint
 #'pasta$test.statistic$selected.subset
-#' @references TODO(youfei)
+#' @references Yu Y, Xia L, Lee S, Zhou X, Stringham H, M, Boehnke M, Mukherjee
+#'   B: Subset-Based Analysis Using Gene-Environment Interactions for Discovery
+#'   of Genetic Associations across Multiple Studies or Phenotypes. Hum Hered
+#'   2019. doi: 10.1159/000496867
+#' @export
 #' @export
 pASTA <- function(p.values, study.sizes, cor)
 {
@@ -51,7 +57,7 @@ p.dlm <- function(test.stat, study.sizes, cor)
   all.combn <- expand.grid(rep(list(0:1), length(study.sizes)))
   all.combn <- all.combn[-1,]
   sum(apply(all.combn, 1, function(v)
-    integrate(cond.prob.z, test.stat, Inf, v, study.sizes, cor)$value)
+    stats::integrate(cond.prob.z, test.stat, Inf, v, study.sizes, cor)$value)
   )
 }
 
@@ -62,7 +68,7 @@ test.statistic <- function(p.values, study.size)
   # In multiple-phenotype analysis, sample sizes are usually the same for all traits
   # total number of studies
   n <- length(p.values)
-  Z.stats <- -qnorm(p.values)
+  Z.stats <- -stats::qnorm(p.values)
   all.combn <- expand.grid(rep(list(0:1), n))
   all.combn <- all.combn[-1,]
   # data frame with the last column being the Z.meta of subset S
@@ -72,7 +78,8 @@ test.statistic <- function(p.values, study.size)
 
   # calculate Z(S) over all possible non-empty subsets
   for (r in 1:nrow(all.combn)) {
-    current.size <- study.size * all.combn[r,] # sample size of studies in a subset
+    # sample size of studies in a subset
+    current.size <- study.size * all.combn[r,]
     current.wt   <- sqrt(current.size / sum(current.size))
     Z.meta <- sum(current.wt * Z.stats)
     Z.df[r, n + 1] <- Z.meta
@@ -102,16 +109,17 @@ cond.prob.z <- function(z, subset, study.sizes, cor)
     if (k %in% which(subset == 0)) {
       # conditional probability given Z_gamma = z
       a <- subset.size / (subset.size + study.sizes[k])
-      p <- p + log(pnorm(z * (1 - sqrt(a)) / sqrt(1 - a), cond.mean, cond.sigma))
+      p <- p + log(stats::pnorm(z * (1 - sqrt(a)) / sqrt(1 - a), cond.mean,
+                                  cond.sigma))
     }
     # k-th study included in subset
     else {
       b <- subset.size / (subset.size - study.sizes[k])
       if (sum(subset) > 1)
-        p <- p + log(pnorm((z * (sqrt(b) - 1)) / sqrt(b - 1), cond.mean,
-                       cond.sigma, lower.tail = F))
+        p <- p + log(stats::pnorm((z * (sqrt(b) - 1)) / sqrt(b - 1), cond.mean,
+                                    cond.sigma, lower.tail = F))
     }
   }
 
-  exp(p) * dnorm(z, sd = sqrt(t(current.wt) %*% cor %*% current.wt))
+  exp(p) * stats::dnorm(z, sd = sqrt(t(current.wt) %*% cor %*% current.wt))
 }

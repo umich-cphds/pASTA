@@ -19,7 +19,9 @@ a list containing the joint p value and the test statistic, which
   contains the optimal subset
 }
 \description{
-description. TODO(youfei)
+Agnostically search for the subset that yields the strongest evidence of
+association and calculate the meta-analytic p-value, possibly in the
+presence of gene-environmental interaction.
 }
 \examples{
 # grab synthetic study for example
@@ -51,5 +53,8 @@ pasta$p.pasta.joint
 pasta$test.statistic$selected.subset
 }
 \references{
-TODO(youfei)
+Yu Y, Xia L, Lee S, Zhou X, Stringham H, M, Boehnke M, Mukherjee
+  B: Subset-Based Analysis Using Gene-Environment Interactions for Discovery
+  of Genetic Associations across Multiple Studies or Phenotypes. Hum Hered
+  2019. doi: 10.1159/000496867
 }

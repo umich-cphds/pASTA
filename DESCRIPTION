@@ -14,6 +14,7 @@ Description: Classical methods for combining summary data from genome-wide
     (ASSET) method by incorporating gene-environment (G-E) interactions
     into the testing procedure.
 License: GPL-3
+Suggests: lmtest
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
