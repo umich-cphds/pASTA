@@ -1,6 +1,6 @@
 Package: subgxe
-Title: Subset GxE via P-value Assisted Subset Testing for Associations
-Version: 0.0.0.9000
+Title: Subset GxE via P-Value Assisted Subset Testing for Associations
+Version: 0.9.0
 Authors@R:
     c(person("Youfei", "Yu", role = "aut",
            email = "youfeiyu@umich.edu"),
