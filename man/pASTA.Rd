@@ -49,7 +49,7 @@ for(i in 1:n.studies) {
 
 pasta <- pASTA(study.pvals, study.sizes, cor.matrix)
 
-pasta$p.pasta.joint
+pasta$p.pasta
 pasta$test.statistic$selected.subset
 }
 \references{
