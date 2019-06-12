@@ -36,7 +36,7 @@
 #'
 #'pasta <- pASTA(study.pvals, study.sizes, cor.matrix)
 #'
-#'pasta$p.pasta.joint
+#'pasta$p.pasta
 #'pasta$test.statistic$selected.subset
 #' @references Yu Y, Xia L, Lee S, Zhou X, Stringham H, M, Boehnke M, Mukherjee
 #'   B: Subset-Based Analysis Using Gene-Environment Interactions for Discovery
@@ -47,8 +47,8 @@
 pASTA <- function(p.values, study.sizes, cor)
 {
   statistic <- test.statistic(p.values, study.sizes)
-  p.pasta.joint <- p.dlm(statistic$test.stat, study.sizes, cor)
-  list(p.pasta.joint = p.pasta.joint, test.statistic = statistic)
+  p.pasta <- p.dlm(statistic$test.stat, study.sizes, cor)
+  list(p.pasta = p.pasta, test.statistic = statistic)
 }
 
 
