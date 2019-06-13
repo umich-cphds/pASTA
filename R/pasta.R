@@ -1,15 +1,15 @@
-#' pASTA for multi-phenotype analysis
+#' pasta for multi-phenotype analysis
 #'
-#' Agnostically search for the subset that yields the strongest evidence of
+#' Search for the subset that yields the strongest evidence of
 #' association and calculate the meta-analytic p-value, possibly in the
 #' presence of gene-environmental interaction.
 #'
-#' @param p.values the p.value for each study.
-#' @param study.sizes the sample size of each study.
-#' @param cor the correlation matrix of the studies. For example, if each study
-#'   is independent, cor should be the idenity matrix
-#' @return a list containing the joint p value and the test statistic, which
-#'   contains the optimal subset
+#' @param p.values The p.value of each study.
+#' @param study.sizes The sample size of each study.
+#' @param cor The correlation matrix of the studies. For example, if each study
+#'   is independent, \code{cor} would be the identity matrix.
+#' @return A list containing the joint p value and the test statistic, which
+#'   contains the optimal subset.
 #' @examples
 #' # grab synthetic study for example
 #' data("studies")
@@ -21,7 +21,7 @@
 #' # In this case the studies were generated independently so its just I
 #' cor.matrix <- diag(1, n.studies)
 #'# load the lrtest() function to conduct the likelihood ratio test
-#'# Used just to generate the input p-values, not required in pASTA itself.
+#'# Used just to generate the input p-values, not required in pasta itself.
 #'
 #'library(lmtest)
 #'
@@ -34,7 +34,7 @@
 #'  study.pvals[i] = lmtest::lrtest(null.model, model)[2, 5]
 #'}
 #'
-#'pasta <- pASTA(study.pvals, study.sizes, cor.matrix)
+#'pasta <- pasta(study.pvals, study.sizes, cor.matrix)
 #'
 #'pasta$p.pasta
 #'pasta$test.statistic$selected.subset
@@ -44,7 +44,7 @@
 #'   2019. doi: 10.1159/000496867
 #' @export
 #' @export
-pASTA <- function(p.values, study.sizes, cor)
+pasta <- function(p.values, study.sizes, cor)
 {
   statistic <- test.statistic(p.values, study.sizes)
   p.pasta <- p.dlm(statistic$test.stat, study.sizes, cor)

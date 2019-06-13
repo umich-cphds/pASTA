@@ -27,7 +27,7 @@ to the paper.
 
 ## subgxe Example
 
-We use simulated data of $K=5$ indepedent case-control studies that come along
+We use simulated data of $K=5$ independent case-control studies that come along
 with the package to illustrate the basic use of `subgxe`. In each data set,
 `G`, `E`, and `D` denote the genetic variant, environmental factor, and
 disease status (binary outcome), respectively. In this case, `G` is coded as
@@ -86,7 +86,7 @@ for(i in 1:K){
 }
 ```
 
-Then we use the `pASTA()` function in the `subgxe` package to conduct subset
+Then we use the `pasta()` function in the `subgxe` package to conduct subset
 analysis and obtain a meta-analytic p-value for the genetic association.
 
 * The `cor` parameter is a correlation matrix of the study-specific p-values.
@@ -103,8 +103,8 @@ study.sizes <- c(nrow(studies[[1]]), nrow(studies[[2]]), nrow(studies[[3]]),
                  nrow(studies[[4]]), nrow(studies[[5]]))
 
 cor.matrix <- diag(1, K)
-pasta.joint <- pASTA(p.values=study.pvals.joint, study.sizes=study.sizes, cor=cor.matrix)
-pasta.marg <- pASTA(p.values=study.pvals.marg, study.sizes=study.sizes, cor=cor.matrix)
+pasta.joint <- pasta(p.values=study.pvals.joint, study.sizes=study.sizes, cor=cor.matrix)
+pasta.marg <- pasta(p.values=study.pvals.marg, study.sizes=study.sizes, cor=cor.matrix)
 
 pasta.joint$p.pasta # delete 'joint'
 pasta.joint$test.statistic$selected.subset
@@ -114,7 +114,7 @@ pasta.marg$test.statistic$selected.subset
 ```
 
 From the output we observe that when the G-E interaction is taken into account,
-`pASTA` yields a meta-analytic p-value of
+`pasta` yields a meta-analytic p-value of
 `r formatC(pasta.joint$p.pasta, format = "f", digits = 3)` and identifies
 the first two studies as non-null. On the other hand, if we only consider the
 marginal associations, the meta-analytic p-value becomes much larger

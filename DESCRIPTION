@@ -1,5 +1,5 @@
 Package: subgxe
-Title: Subset GxE via P-Value Assisted Subset Testing for Associations
+Title: Combine multiple GWAS by using gene-environment interactions
 Version: 0.9.0
 Authors@R:
     c(person("Youfei", "Yu", role = "aut",
@@ -8,13 +8,13 @@ Authors@R:
              email = "alexrix@umich.edu"))
 Description: Classical methods for combining summary data from genome-wide
     association studies (GWAS) only use marginal genetic effects and power can
-    be compromised in the presence of heterogeneity. pASTA is an R package that
-    implements p-value Assisted Subset Testing for Association, a method that
-    generalizes the previously proposed association analysis based on subsets
-    (ASSET) method by incorporating gene-environment (G-E) interactions
-    into the testing procedure.
+    be compromised in the presence of heterogeneity. subgxe is an R package
+    that implements p-value Assisted Subset Testing for Association (pASTA), a
+    method that generalizes the previously proposed association analysis based
+    on subsets method by incorporating gene-environment (G-E)
+    interactions into the testing procedure.
 License: GPL-3
-Suggests: 
+Suggests:
     lmtest,
     knitr,
     rmarkdown
