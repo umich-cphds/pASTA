@@ -1,5 +1,5 @@
 Package: subgxe
-Title: Combine multiple GWAS by using gene-environment interactions
+Title: Combine Multiple GWAS by Using Gene-Environment Interactions
 Version: 0.9.0
 Authors@R:
     c(person("Youfei", "Yu", role = "aut",
