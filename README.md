@@ -6,13 +6,13 @@ Classical methods for combining summary data from genome-wide association studie
 ## Installation
 ```{R}
 library(devtools)
-install_github("umich-cphds/subgxe")
+install_github("umich-cphds/subgxe", build_opt = c("--no-resave-data", "--no-manual"))
 ```
 
 ## Example
-Documentation is in progress, but you can load up R and type
+load up R and type
 ```{R}
 library(subgxe)
-?subgxe
+vignette("subgxe")
 ```
-for a basic example.
+for a tutorial.
