@@ -8,7 +8,7 @@ To install `subgxe` from CRAN,
 ```{R}
 install.packages("subgxe")
 ```
-Alternatively, you can install the package from Github usingh `devtools`
+Alternatively, you can install the package from Github using `devtools`
 ```{R}
 library(devtools)
 install_github("umich-cphds/subgxe", build_opt = c())
