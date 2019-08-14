@@ -1,10 +1,10 @@
 Package: subgxe
 Title: Combine Multiple GWAS by Using Gene-Environment Interactions
-Version: 0.9.0
+Version: 0.9.1
 Authors@R:
-    c(person("Youfei", "Yu", role = "aut",
+    c(person("Youfei", "Yu", role = c("aut", "cre"),
            email = "youfeiyu@umich.edu"),
-      person("Alexander", "Rix", role = "cre",
+      person("Alexander", "Rix", role = c("aut", cre"),
              email = "alexrix@umich.edu"))
 Description: Classical methods for combining summary data from genome-wide
     association studies (GWAS) only use marginal genetic effects and power can
