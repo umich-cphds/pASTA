@@ -40,7 +40,6 @@ model, please refer to the original [article](https://doi.org/10.1159/000496867)
 (Table A4, Scenario 2).
 
 ```{r setup}
-# library(devtools)
 # install.packages("subgxe")
 library(subgxe)
 ```
